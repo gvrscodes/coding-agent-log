@@ -1,0 +1,27 @@
+[project]
+name = "agent-log"
+version = "0.1.0"
+description = "Viewer app for agent-generated code reviews and explanations"
+readme = "AGENTS.md"
+requires-python = ">=3.11"
+dependencies = [
+    "flask>=3.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.8.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

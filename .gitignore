@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# Testing and linting
+.pytest_cache/
+.ruff_cache/
+
+# Local state
+settings.json

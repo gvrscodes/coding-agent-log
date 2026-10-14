@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Log</title>
+  <link rel="stylesheet" href="vendor/highlight-dark.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <header class="app-header">
+      <div class="brand">
+        <h1>Agent Log</h1>
+      </div>
+      <div class="root-controls">
+        <label for="recent-roots-select" class="sr-only">Recent Projects</label>
+        <select id="recent-roots-select" class="recent-select" title="Switch recent project"></select>
+        <button type="button" id="open-picker-btn" class="btn btn-secondary">Browse...</button>
+      </div>
+    </header>
+
+    <div class="app-body">
+      <aside class="sidebar">
+        <div class="search-box">
+          <input type="search" id="file-search" placeholder="Filter by filename..." aria-label="Filter files">
+        </div>
+        <div class="sidebar-sections">
+          <section class="doc-section" aria-labelledby="heading-reviews">
+            <h2 id="heading-reviews">Code Reviews</h2>
+            <ul id="list-code-reviews" class="file-list" role="list"></ul>
+          </section>
+          <section class="doc-section" aria-labelledby="heading-explanations">
+            <h2 id="heading-explanations">Explanations</h2>
+            <ul id="list-explanations" class="file-list" role="list"></ul>
+          </section>
+        </div>
+      </aside>
+
+      <main class="main-content" id="main-view">
+        <div id="empty-state" class="empty-state">
+          <p class="empty-title">No document selected</p>
+          <p class="empty-subtitle">Choose a code review or explanation from the list to view its contents.</p>
+        </div>
+        <article id="doc-viewer" class="doc-viewer" hidden>
+          <header class="doc-header">
+            <div>
+              <span id="doc-category" class="badge"></span>
+              <h2 id="doc-title" class="doc-title"></h2>
+            </div>
+            <time id="doc-time" class="doc-time"></time>
+          </header>
+          <div id="markdown-body" class="markdown-body"></div>
+        </article>
+      </main>
+    </div>
+  </div>
+
+  <div id="picker-modal" class="modal-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="picker-title">
+    <div class="modal-dialog">
+      <header class="modal-header">
+        <h2 id="picker-title">Select Project Root</h2>
+        <button type="button" id="picker-close-btn" class="btn-icon" aria-label="Close dialog">&times;</button>
+      </header>
+      <div class="modal-body">
+        <div class="picker-nav">
+          <button type="button" id="picker-up-btn" class="btn btn-secondary">Up</button>
+          <span id="picker-current-path" class="current-path" title="Current path"></span>
+        </div>
+        <ul id="picker-folder-list" class="folder-list" role="list"></ul>
+      </div>
+      <footer class="modal-footer">
+        <button type="button" id="picker-cancel-btn" class="btn btn-secondary">Cancel</button>
+        <button type="button" id="picker-select-btn" class="btn btn-primary">Select Folder</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="vendor/marked.min.js"></script>
+  <script src="vendor/purify.min.js"></script>
+  <script src="vendor/highlight.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
